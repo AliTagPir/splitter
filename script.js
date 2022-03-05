@@ -1,11 +1,17 @@
 "use strict"
-function split4(){
-    addQuarter(this)
-    addQuarter(this)
-    addQuarter(this)
-    addQuarter(this)
-}
+function split4(e){
+    if(e.shiftKey){
+        this.parentNode.addEventListener("click",split4)
+        this.parentNode.innerHTML=''
+    }else{
 
+        addQuarter(this)
+        addQuarter(this)
+        addQuarter(this)
+        addQuarter(this)
+    }
+    e.stopPropagation()
+}
 
 function addQuarter(intoDiv){
     let q=document.createElement("div")
@@ -18,9 +24,10 @@ function addQuarter(intoDiv){
     q.addEventListener("click",split4)
 
     intoDiv.appendChild(q)
-
+    
 
 
 }
 
 document.body.addEventListener("click",split4)
+
